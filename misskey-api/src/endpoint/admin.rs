@@ -68,8 +68,8 @@ pub mod drive_capacity_override;
 #[cfg_attr(docsrs, doc(cfg(feature = "13-0-0")))]
 pub mod roles;
 
-#[cfg(not(feature = "13-0-0"))]
-#[cfg_attr(docsrs, doc(cfg(not(feature = "13-0-0"))))]
+#[cfg(any(not(feature = "13-0-0"), feature = "13-14-0"))]
+#[cfg_attr(docsrs, doc(cfg(any(not(feature = "13-0-0"), feature = "13-14-0"))))]
 pub mod invite;
 
 #[cfg(not(feature = "13-0-0"))]

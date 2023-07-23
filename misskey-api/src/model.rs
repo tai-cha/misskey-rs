@@ -30,6 +30,7 @@ pub mod flash;
 pub mod following;
 pub mod gallery;
 pub mod id;
+pub mod invite_code;
 pub mod log;
 pub mod messaging;
 pub mod meta;
