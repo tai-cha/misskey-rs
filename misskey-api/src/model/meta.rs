@@ -316,6 +316,9 @@ pub struct AdminMeta {
     #[cfg_attr(docsrs, doc(cfg(not(feature = "13-10-0"))))]
     pub pinned_clip_id: Option<Id<Clip>>,
     pub cache_remote_files: Option<bool>,
+    #[cfg(feature = "13-14-0")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "13-14-0")))]
+    pub cache_remote_sensitive_files: Option<bool>,
     #[cfg(not(feature = "13-10-3"))]
     #[cfg_attr(docsrs, doc(cfg(not(feature = "13-10-3"))))]
     pub use_star_for_reaction_fallback: bool,
@@ -400,6 +403,12 @@ pub struct AdminMeta {
     #[cfg(feature = "13-10-3")]
     #[cfg_attr(docsrs, doc(cfg(feature = "13-10-3")))]
     pub enable_charts_for_federated_instances: bool,
+    #[cfg(feature = "13-14-0")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "13-14-0")))]
+    pub enable_server_machine_stats: bool,
+    #[cfg(feature = "13-14-0")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "13-14-0")))]
+    pub enable_identicon_generation: bool,
     #[cfg(feature = "13-0-0")]
     #[cfg_attr(docsrs, doc(cfg(feature = "13-0-0")))]
     pub policies: PoliciesSimple,
