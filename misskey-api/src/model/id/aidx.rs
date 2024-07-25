@@ -12,6 +12,7 @@ use thiserror::Error;
 pub struct Aidx {
     pub timestamp: i64,
     pub node_id: [u8; NODE_LENGTH],
+    // 0000 - 9999
     pub counter: u16,
 }
 
@@ -95,7 +96,7 @@ impl Display for Aidx {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let since_2000 = u64::try_from(self.timestamp - TIME2000).unwrap_or(0);
         let timestamp_fmt = Radix36::new(since_2000);
-        write!(f, "{:08}{}{:04}", timestamp_fmt, self.node_id_to_string(), self.counter)
+        write!(f, "{:0time$}{}{:0noise$}", timestamp_fmt, self.node_id_to_string(), self.counter, time = TIME_LENGTH, noise = NOISE_LENGTH)
     }
 }
 
@@ -153,7 +154,7 @@ mod tests {
     {
         let timestamp = datetime.timestamp_millis();
         let node_id = generate_random_string(super::NODE_LENGTH);
-        let counter = source.gen::<u16>() % 10000;
+        let counter = source.gen::<u16>() % 10u16.pow(super::NOISE_LENGTH.try_into().unwrap());
         Aidx { timestamp, node_id, counter }
     }
 
