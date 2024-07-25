@@ -117,7 +117,7 @@ mod tests {
     fn test_deserialize_const() {
         let string = "817537316bb2ef661de6af11";
         let meid: Meid = string.parse().expect("failed to parse");
-        assert_eq!(meid.datetime(), Utc.timestamp_millis(1602948787122));
+        assert_eq!(meid.datetime(), Utc.timestamp_millis_opt(1602948787122).unwrap());
     }
 
     #[test]

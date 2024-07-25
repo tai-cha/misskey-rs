@@ -133,7 +133,7 @@ mod tests {
     fn test_deserialize_const() {
         let string = "8dhemt9ubf";
         let aid: Aid = string.parse().expect("failed to parse");
-        assert_eq!(aid.datetime(), Utc.timestamp_millis(1602948787122));
+        assert_eq!(aid.datetime(), Utc.timestamp_millis_opt(1602948787122).unwrap());
     }
 
     #[test]
