@@ -84,8 +84,9 @@
 //! - `tokio-runtime`: Use the [tokio](https://tokio.rs) v1.0 runtime in the WebSocket client.
 //!   Enabled by default.
 //! - `async-std-runtime`: Use the [async-std](https://async.rs) runtime in the WebSocket client.
-//! - `aid`: Assume that the `aid` ID generation method is used in the targeted Misskey instance.
+//! - `aidx` : Assume that the `aid` ID generation method is used in the targeted Misskey instance.
 //!   Enabled by default.
+//! - `aid`: Assume that the `aid` ID generation method is used in the targeted Misskey instance.
 //! - `meid`: Assume that the `meid` ID generation method is used in the targeted Misskey instance.
 //! - `ulid`: Assume that the `ulid` ID generation method is used in the targeted Misskey instance.
 //! - `objectid`: Assume that the `objectid` ID generation method is used in the targeted Misskey instance.

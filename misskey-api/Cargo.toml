@@ -13,7 +13,7 @@ keywords = ["async", "misskey"]
 categories = ["api-bindings"]
 
 [features]
-default = ["aid"]
+default = ["aidx"]
 
 13-14-0 = ["13-13-2"]
 13-13-2 = ["13-13-0"]
@@ -96,6 +96,7 @@ default = ["aid"]
 12-8-0 = ["12-5-0"]
 12-5-0 = []
 
+aidx = []
 aid = []
 meid = []
 ulid = []

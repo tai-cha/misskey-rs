@@ -8,10 +8,13 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use thiserror::Error;
 
+pub mod aidx;
 pub mod aid;
 pub mod meid;
 pub mod object_id;
 
+#[cfg(feature = "aidx")]
+type IdImpl = aidx::Aidx;
 #[cfg(feature = "aid")]
 type IdImpl = aid::Aid;
 #[cfg(feature = "meid")]
@@ -27,6 +30,12 @@ pub struct Id<T: ?Sized> {
 }
 
 impl<T: ?Sized> Id<T> {
+    #[cfg(any(docsrs, feature = "aidx"))]
+    #[cfg_attr(docsrs, doc(cfg(feature = "aidx")))]
+    pub fn as_aidx(&self) -> &aidx::Aidx {
+        &self.inner
+    }
+
     #[cfg(any(docsrs, feature = "aid"))]
     #[cfg_attr(docsrs, doc(cfg(feature = "aid")))]
     pub fn as_aid(&self) -> &aid::Aid {
@@ -49,6 +58,13 @@ impl<T: ?Sized> Id<T> {
     #[cfg_attr(docsrs, doc(cfg(feature = "objectid")))]
     pub fn as_object_id(&self) -> &object_id::ObjectId {
         &self.inner
+    }
+}
+
+#[cfg(feature = "aidx")]
+impl<T: ?Sized> From<Id<T>> for aidx::Aidx {
+    fn from(id: Id<T>) -> aidx::Aidx {
+        *id.as_aidx()
     }
 }
 
